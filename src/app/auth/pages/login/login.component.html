@@ -3,6 +3,7 @@
         <div class="col-md-6">
             <div class="row" style="margin-top: 30vh;">
                 <div class="col-md-2"></div>
+                <h3>Hello</h3>
                 <div class="col-md-8">
                     <form (ngSubmit)="login()" #loginForm="ngForm">
                         <div class="mb-3">
@@ -23,14 +24,23 @@
                             </div>
 
                         </div>
-                        <div class="mb-3 form-check">
+                        <div class="mb-3 form-check center-block text-center">
 
-                            <input [(ngModel)]="recordarme" name="recordarme" type="checkbox" id="recordar" class="form-check-input">
+                            <input [(ngModel)]="recordarme" name="recordarme" type="checkbox" id="recordar" class="form-check-input center-block">
                             <label class="form-check-label" for="recordar">Recuerdame</label>
 
                         </div>
                         <div class="d-grid gap-2">
-                            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-danger">Login</button>
+                            <button  type="submit" class="btn btn-danger">Login</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="row"><br></div>
+                            <p class="small text-center">Don´t have an account?</p>
+                            <div class="col-md-4 center-block">
+                                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-dark">Register</button>
+                            </div>
+                             <div class="col-md-4"></div>
                         </div>
                     </form>
                 </div>

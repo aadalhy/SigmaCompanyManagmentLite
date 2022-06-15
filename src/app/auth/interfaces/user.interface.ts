@@ -5,19 +5,19 @@ export interface User {
 }
 
 export interface Cont {
-    encontroUsuario: EncontroUsuario;
-    token:           string;
+    usuario: Usuario;
+    token:   string;
 }
 
-export interface EncontroUsuario {
+export interface Usuario {
     _id:              string;
     blnEstado:        boolean;
     strNombre:        string;
-    strNombreUsuario: string;
     strApellido:      string;
-    strDireccion:     string;
     strEmail:         string;
     strContrasena:    string;
+    strDireccion:     string;
+    strNombreUsuario: string;
     idEmpresa:        string;
     strImagen:        string;
     _idObjRol:        string;

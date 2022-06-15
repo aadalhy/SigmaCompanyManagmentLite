@@ -37,17 +37,18 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void { 
+    console.log(this.email, this.password);
     this.authService.login(this.email, this.password).subscribe( data => {
       Toast.fire({
         icon: 'success',
-        title: `Signed in successfully, welcome ${data.cont.encontroUsuario.strNombre}!`
+        title: `Signed in successfully, welcome ${data.cont.usuario.strNombre}!`
       })
       localStorage.setItem('token', data.cont.token);
       this.router.navigate(['/sigma']);
       if (this.recordarme) {
         localStorage.setItem('email', this.email);
         localStorage.setItem('pass', this.password);
-        localStorage.setItem('userName', data.cont.encontroUsuario.strNombre);
+        localStorage.setItem('userName', data.cont.usuario.strNombre);
       } else {
         localStorage.removeItem('email');
         localStorage.removeItem('pass');

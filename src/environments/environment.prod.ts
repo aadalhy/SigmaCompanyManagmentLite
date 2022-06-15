@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://equipo1-bootcamp.azurewebsites.net/api'
+  apiUrl: 'https://proyecto-equipo--4.herokuapp.com/api/'
 };
