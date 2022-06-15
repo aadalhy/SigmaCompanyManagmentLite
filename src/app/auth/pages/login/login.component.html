@@ -6,16 +6,28 @@
                 <div class="col-md-8">
                     <form (ngSubmit)="login()" #loginForm="ngForm">
                         <div class="mb-3">
+                            
                             <label class="form-label">Email</label>
-                            <input type="email" [(ngModel)]="email" name="email" class="form-control" placeholder="Enter Email" required>
+                            <input type="email" class="form-control" placeholder="Enter Email" [ngClass]="{'is-invalid': strEmail.errors?.['required'] && loginForm.controls['email'].touched }" name="email" [(ngModel)]="email" required #strEmail="ngModel">
+                            <div class="invalid-feedback" *ngIf="strEmail.errors?.['required']">
+                                <small>Please provide a valid Email.</small>
+                            </div>
+
                         </div>
                         <div class="mb-3">
+
                             <label class="form-label">Password</label>
-                            <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Enter Password" required>
+                            <input type="password" class="form-control" placeholder="Enter Password" [ngClass]="{'is-invalid': strPassword.errors?.['required'] && loginForm.controls['password'].touched }" name="password" [(ngModel)]="password" required #strPassword="ngModel">
+                            <div class="invalid-feedback" *ngIf="strPassword.errors?.['required']">
+                                <small>Please provide a valid Password.</small>
+                            </div>
+
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+
+                            <input [(ngModel)]="recordarme" name="recordarme" type="checkbox" id="recordar" class="form-check-input">
+                            <label class="form-check-label" for="recordar">Recuerdame</label>
+
                         </div>
                         <div class="d-grid gap-2">
                             <button [disabled]="loginForm.invalid" type="submit" class="btn btn-danger">Login</button>

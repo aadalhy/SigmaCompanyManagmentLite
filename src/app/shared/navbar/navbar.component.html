@@ -19,8 +19,8 @@
                     <a class="nav-link" routerLink="/sigma/user" routerLinkActive="active">Users</a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                <i class=""></i>
+            <span class="navbar-text text-light btn" (click)="logout()">{{userName}}
+                <i class="fa fa-user-circle-o text-warning" aria-hidden="true"></i>
             </span>
         </div>
     </div>

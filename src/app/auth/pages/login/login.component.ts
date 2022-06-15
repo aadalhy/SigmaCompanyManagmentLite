@@ -7,7 +7,7 @@ const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000,
+  timer: 1500,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -24,11 +24,16 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
+  recordarme: boolean = false;
 
   constructor( private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('email') && localStorage.getItem('pass')) {
+      this.email = localStorage.getItem('email')!;
+      this.password = localStorage.getItem('pass')!;
+      this.recordarme = true;
+    }
   }
 
   login(): void { 
@@ -39,6 +44,15 @@ export class LoginComponent implements OnInit {
       })
       localStorage.setItem('token', data.cont.token);
       this.router.navigate(['/sigma']);
+      if (this.recordarme) {
+        localStorage.setItem('email', this.email);
+        localStorage.setItem('pass', this.password);
+        localStorage.setItem('userName', data.cont.encontroUsuario.strNombre);
+      } else {
+        localStorage.removeItem('email');
+        localStorage.removeItem('pass');
+      }
+
     }, error => {
       Toast.fire({
         icon: 'error',
